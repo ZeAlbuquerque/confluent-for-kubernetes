@@ -1,0 +1,28 @@
+---
+apiVersion: platform.confluent.io/v1beta1
+metadata:
+  name: debezium-sqlserver-connector-testDB
+kind: Connector
+spec:
+  name: debezium-sqlserver-connector-testDB
+  taskMax: 1
+  class: io.debezium.connector.sqlserver.SqlServerConnector
+  configs:
+    topic.prefix: "sqlserver"
+    topic.creation.enable : "true"
+    database.names: "testDB"
+    database.hostname: "sqlserver"
+    database.port: "1433"
+    database.user: "sa"
+    database.password: "Techrom1903!"
+    database.encrypt: "false"
+    topic.creation.default.partitions: "3"
+    schema.history.internal.kafka.bootstrap.servers: "kafka:9092"
+    schema.history.internal.kafka.topic: "sqlserver-history"
+    topic.creation.default.replication.factor: "1"
+  restartPolicy:
+    type: OnFailure
+    maxRetry: 10
+  connectClusterRef:
+    name: connect
+---

@@ -1,0 +1,19 @@
+{
+  "name": "testDB-sqlserver-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "tasks.max": "1",
+    "topic.prefix": "sqlserver",
+    "topic.creation.enable" : true,
+    "database.names": "testDB",
+    "database.hostname": "sqlserver",
+    "database.port": "1433",
+    "database.user": "sa",
+    "database.password": "Techrom1903!",
+    "database.encrypt": "false",
+    "topic.creation.default.partitions": "3",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:9092",
+    "schema.history.internal.kafka.topic": "sqlserver-history",
+    "topic.creation.default.replication.factor": "1"
+  }
+}
